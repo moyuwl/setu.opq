@@ -18,7 +18,7 @@ function ReceiveFriendMsg(CurrentQQ, data)
     return 1
 end
 function ReceiveGroupMsg(CurrentQQ, data)
-    if (string.find(data.Content, "r18") ~= 1 and (string.find(data.Content, "R18") ~= 1) then
+    if (string.find(data.Content, "r18") ~= 1 and string.find(data.Content, "R18") ~= 1) then
         return 1
     end
     if not contains(whitelist, data.FromGroupId) then
