@@ -27,14 +27,14 @@ function ReceiveGroupMsg(CurrentQQ, data)
     
     local idx = math.random(0, 20) -- 有效的索引从0000 ~ 0020
     idx = string.format('%04d', idx) -- 前面填充0,
-    local url = "https://cdn.jsdelivr.net/gh/ipchi9012/setu_pics@latest/setu_r18_" .. idx .. ".js" -- 索引文件地址
+    local url = "https://cdn.jsdelivr.net/gh/ipchi9012/setu_pics/setu_r18_" .. idx .. ".js" -- 索引文件地址
     log.info("url=%s", url)
     local resp = http.request("GET", url).body
     idx = string.find(resp, "(", 1, true)
     resp = string.sub(resp, idx + 1, -2) -- 去掉前面的setu_xxxx(和后面的)
     resp = json.decode(resp)
     local item = resp[math.random(#resp)] -- 从数组中随机选取一个元素
-    local url = "https://cdn.jsdelivr.net/gh/ipchi9012/setu_pics@latest/" .. item.path
+    local url = "https://cdn.jsdelivr.net/gh/ipchi9012/setu_pics/" .. item.path
     local text = "『" .. item.title .. "』 作者：" .. item.author .. "\n原图：" .. item.url
     log.info("url=%s, text=%s", url, text)
     ApiRet = Api.Api_SendMsg(
